@@ -1,0 +1,156 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container-fluid.main{
+    height: 100vh;
+}
+
+.content{
+    height: 100%;
+}
+
+.left-section{
+    box-shadow: 1px 0 2px rgb(190, 188, 188);
+}
+
+.left-section a{
+    font-size: .91rem;
+}
+
+img.user-dp{
+    height: 10rem;
+    width: 10rem;
+    background-image: url('../images/download.jpeg');
+    /* background: linear-gradient(rgba(0,0,0.4), rgba(0,0,0.4)); */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+    outline: none;
+}
+
+.username{
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.naira{
+    text-decoration: line-through;
+}
+
+.balance h2{
+    font-size: 2rem;
+}
+
+.balance p{
+    font-size: 1.2rem;
+}
+
+.description-card{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    /* margin: 1rem .5rem; */
+    box-shadow: 0 0 3px rgba(197, 197, 197, 0.89);
+    border: none
+}
+
+.row .description-card p{
+    font-size: 1.3rem;
+}
+
+.form-container{
+    width: 40%;
+    height: 60%;
+    padding: 2rem 1.2rem;
+    margin: 5% auto;
+    box-shadow: 0 3px 7px rgb(218, 218, 218);
+}
+
+.form-container h3{
+    font-weight: 600;
+    padding: .3rem;
+    text-align: center;
+}
+
+.right-section{
+    padding: 2rem;
+}
+
+.expense_type{
+    font-weight: bold;
+}
+
+td .edit-delete{
+    display: flex;
+    flex-direction: column;
+    gap: .51rem;
+}
+
+.edit-delete button{
+    width: 70%;
+    padding: 3px;
+}
+
+.btn a{
+    color: #fff;
+}
+
+.btn{
+    background-color: white;
+    border-color: rgb(105, 105, 105);
+    margin: 1px;
+    color: #424242;
+}
+
+.btn:hover{
+    background-color: rgb(105, 105, 105);
+    border: none;
+    color: white;
+}
+.btn-info{
+    background-color: rgb(105, 105, 105);
+    border-color: rgb(105, 105, 105);
+    /* margin: .8px; */
+    color: white;
+}
+
+@media (min-width: 900px){
+    .content{
+        display: grid;
+        grid-template-columns: 2fr 7fr;
+    }
+
+    .left-section{
+        height: 100%;
+        width: min-content;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 858px){
+    .content{
+        display: grid;
+        grid-template-columns: 2fr 7fr;
+    }
+
+    .left-section{
+        height: 100%;
+        width: min-content;
+    }
+
+    .left-section h4{
+        font-size: 1rem;
+    }
+
+    .left-section a{
+        font-size: .8rem;
+    }
+
+}

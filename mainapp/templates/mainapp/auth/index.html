@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}KC Technologies{% endblock %}</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {% block style%}
+    {% endblock style%}
+</head>
+<body>
+    <!-- Main webpage content -->
+    <div class="body-content">
+        <!-- THE BODY OF THE PAGE -->
+        {% block body %}
+        <section class="content-container">
+            <!-- left-section where the posts are located -->
+            <div class="left-section">
+                {%if messages%}
+                    {%for message in messages%}
+                        <div class="alert alert-{{message.tags}}">{{message}}</div>
+                    {% endfor %}
+                {% endif %}
+                
+            {% block content %}
+                <!-- Pagination code for the posts -->
+                {% if is_paginated %}
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1" class="btn btn-outline-info mb-4">First Page</a>
+                        <a href="?page={{page_obj.previous_page_number }}" class="btn btn-outline-info mb-4"><</a>
+                    {% endif %}
+
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                            <a href="?page={{num}}" class="btn btn-info mb-4">{{num}}</a>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %} 
+                            <a href="?page={{num}}" class="btn btn-outline-info mb-4">{{num}}</a>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% if page_obj.has_next %}
+                        <a href="?page={{page_obj.next_page_number}}" class="btn btn-outline-info mb-4">></a>
+                        <a href="?page={{page_obj.paginator.num_pages}}" class="btn btn-outline-info mb-4">Last</a>
+                    {% endif %}
+                {% endif %}
+            {% endblock content %}
+            </div>
+            
+            <!-- right-section -->
+            {% block sidebar %}
+            {% endblock sidebar %}
+        </section>
+    {% endblock body %}
+    </div>
+
+        <!-- THE JAVASCRIPT LINKS AND FILES -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% block newscript %}
+    {% endblock newscript %}
+
+</body>
+</html>

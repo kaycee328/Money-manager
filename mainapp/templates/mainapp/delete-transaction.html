@@ -1,0 +1,77 @@
+{% extends 'mainapp/homepage.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <small class="text-muted mb-2">
+            <a href="{% url 'home'%}" class="ml-2 mb-2 text-decoration-none">Back to homepage</a>
+        </small>
+
+        <p class="font-weight-bold h4">You have {{number_of_transactions}} transaction(s)</p>
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5 class="card-title"><span class="text-uppercase">{{request.user}}'s </span>Transaction History</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-responsive p-1">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for transaction in transactions %}
+                            <tr>
+                                <th scope="row">{{ offset|add:forloop.counter }}</th>
+                                <!-- <th scope="row">{{ forloop.counter }}</th> -->
+                                <td>{{transaction.date}}</td>
+                                <td>{{transaction.title}}</td>
+                                <td><span class="naira">N</span> <span class="number-figures">{{transaction.amount}}</span></td>
+                                <td>
+                                    {% if transaction.expense_type == 'Negative' %}
+                                        DEBIT
+                                    {% elif transaction.expense_type == 'Positive' %}
+                                        CREDIT
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="edit-delete">
+                                        <a href="{% url 'transaction-detail' transaction.pk %}" class="btn btn-outline-info btn-sm">View details</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor%}
+
+                        <!-- Pagination code for the transactions -->
+                        {% if is_paginated %}
+                            {% if page_obj.has_previous %}
+                                <a href="?page=1" class="btn btn-outline-info mb-4">First Page</a>
+                                <a href="?page={{page_obj.previous_page_number }}" class="btn btn-outline-info mb-4"><</a>
+                            {% endif %}
+
+                            {% for num in page_obj.paginator.page_range %}
+                                {% if page_obj.number == num %}
+                                    <a href="?page={{num}}" class="btn btn-info mb-4">{{num}}</a>
+                                {% elif num > page_obj.number|add:'-2' and num < page_obj.number|add:'2' %} 
+                                    <a href="?page={{num}}" class="btn btn-outline-info mb-4">{{num}}</a>
+                                {% endif %}
+                            {% endfor %}
+                            
+                            {% if page_obj.has_next %}
+                                <a href="?page={{page_obj.next_page_number}}" class="btn btn-outline-info mb-4">></a>
+                                <a href="?page={{page_obj.paginator.num_pages}}" class="btn btn-outline-info mb-4">Last</a>
+                            {% endif %}
+                        {% endif %}
+                        <!-- Add more rows as needed -->
+                        
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}

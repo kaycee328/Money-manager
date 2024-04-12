@@ -1,0 +1,42 @@
+{% extends 'mainapp/homepage.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container form-container">
+    <small class="text-muted mb-2">
+        <a href="{% url 'home'%}" class="ml-2 mb-lg-4 text-decoration-none">Back to homepage</a>
+    </small>
+    <h3>ADD A TRANSACTION</h3>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form | crispy}}
+        <button type="submit" class="btn btn-outline-info">Submit</button>
+    </form>
+</div>
+{% endblock content %}
+{% block js %}
+<script>
+    // convert = (num) => {
+    //     let formattedNumber = Number(num).toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    //     return formattedNumber
+    // }
+
+    // const numbers = document.getElementsByTagName('input')
+    // for (let i = 0; i < numbers.length; i++) {
+    //     if (numbers[i].type=='number'){
+    //         console.log(numbers[i].type)
+    //         numbers[i].classList.add('input-number')
+
+    //         const input = document.querySelector('.input-number')
+    //         input.addEventListener('mouseout', function(event){
+    //                 event.target.value = convert(event.target.value)
+    //                 // console.log(event.target.value)
+    //                 console.log(convert(event.target.value))
+    //         })
+    //     }
+    // }
+    
+</script>
+    
+{% endblock js %}

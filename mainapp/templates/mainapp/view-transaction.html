@@ -1,0 +1,35 @@
+{% extends 'mainapp/homepage.html' %}
+
+{% block content %}
+<div class="container mt-5">
+        <small class="text-muted mb-2">
+            <p><a href="{% url 'my-transactions'%}" class="ml-2 mb-2 text-decoration-none">Go to transaction history</a></p>
+        </small>
+        <div class="card">
+            <div class="card-body">
+                <div>By {{transaction.user}}</div>
+                {% if transaction.expense_type == 'Negative' %}
+                    <div class="expense_type">DEBIT</div>
+                {% elif transaction.expense_type == 'Positive' %}
+                    <div class="expense_type">CREDIT</div>
+                {% endif %}
+                <h5 class="card-title">Title: {{transaction.title}}</h5>
+                <p class="card-text">
+                    Amount: 
+                    <span class="number-figures ">{{transaction.amount}}</span>
+                </p>
+                <button type="button" class="btn btn-outline-info" onclick=back() >Done</button>
+                <!-- <a href="{% url 'homepage' %}" class="btn btn-outline-info">Done</a> -->
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+{% block js%}
+<script>
+    // document.addEventListener('DOMContentLoaded', function () {
+        function back(){
+            window.location.href = "/"
+        }
+    // });
+</script>
+{% endblock js%}

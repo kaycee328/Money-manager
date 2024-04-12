@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'mainapp/css/template.css' %}?{% now 'U' %}">
+
+    <title>Document</title>
+</head>
+<body>
+    {% block content%}
+        <div class="container-fluid main">
+            <div class="row content">
+                <div class="col-lg-3 col-3 p-3 pl-4 left-section">
+                    <img src="" alt="" class="rounded-circle mb-lg-3 user-dp">
+                    <h4 class="mb-lg-3">Welcome, <span class="username">{{request.user}}</span></h4>
+                    <div class="links row">
+                        <a href="{% url 'create' %}" class="text-decoration-none col-12 mb-sm-1">Add transaction</a>
+                        <a href="{% url 'my-transactions' %}" class="text-decoration-none col-12">View Transaction history</a>
+                        <a href="{% url 'delete' %}" class="text-decoration-none col-12">Delete a transaction</a>
+                    </div>
+                </div>
+                <div class="col-lg-10 col-9 p-4 p-lg-5 right-section">
+                    <div class="container balance">
+                        <small class="text-muted mb-lg-5">
+                            Do you want to logout? <a href="{% url 'user-logout'%}" class="ml-2">Click here</a>
+                        </small>
+                        <h2>Balance:</h2>
+                        <p>
+                            <span class="naira">N</span>
+                            <span class="number-figures">
+                                {{balance}}
+                            </span>
+                        </p>
+                    </div>
+                    <div class="row container-fluid">
+                        <div class="col-6 description-card m-1">
+                            <h4 class="pt-1">Total Credit:</h4>
+                            <p>
+                                <span class="naira">N</span>
+                                <span class="number-figures">
+                                    {{credit}}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="col-6 description-card m-1">
+                            <h4 class="pt-1">Total Debit:</h4>
+                            <p>
+                                <span class="naira">N</span>
+                                <span class="number-figures">
+                                    {{debit}}
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock content%}
+
+    <script>
+        // document.addEventListener('DOMContentLoaded', function () {
+            const numbers = document.querySelectorAll('.number-figures');
+            console.log(numbers);
+            
+            for (let i = 0; i < numbers.length; i++) {
+                let formattedNumber = Number(numbers[i].innerText).toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+                numbers[i].innerText = formattedNumber;
+            }
+            // });
+    </script>
+    {% block js %}
+    {% endblock js%}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>    
+</body>
+</html>

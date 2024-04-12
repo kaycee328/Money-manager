@@ -1,0 +1,226 @@
+/* Reset some default styles */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body, h1, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Customize the scrollbar for WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #35393b; /* Change the color as needed */
+    border-radius: 10px; /* Set the radius to create rounded corners */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ecf0f1; /* Change the color as needed */
+}
+
+/* Customize the scrollbar for Firefox */
+/* Note: Firefox does not support rounded corners directly, so this only affects the track */
+/* You may want to leave the default scrollbar for Firefox or use a JavaScript-based solution for better customization */
+
+/* Customize the scrollbar for Edge and Internet Explorer 11 */
+/* Note: Microsoft Edge (Chromium-based) uses the WebKit syntax, but Internet Explorer 11 requires its own syntax */
+
+/* Edge */
+::-ms-scrollbar {
+    width: 10px;
+}
+
+::-ms-scrollbar-thumb {
+    background-color: #3498db; /* Change the color as needed */
+    border-radius: 10px; /* Set the radius to create rounded corners */
+}
+
+::-ms-scrollbar-track {
+    background-color: #ecf0f1; /* Change the color as needed */
+}
+
+
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+}
+/* Add this to your existing CSS file or include it in a new file */
+
+/* Container styling */
+.container {
+    max-width: 600px;
+    margin: 10px auto;
+    background-color: #fff;
+    padding: 10px 24px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: auto; /* Add overflow: auto to enable scrolling within the container if needed */
+}
+
+.naira{
+    text-decoration: line-through;
+}
+
+/* Style the rest of your content as needed */
+
+.title {
+    color: #3498db;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.balance {
+    font-size: 1.2em;
+    color: #27ae60;
+    text-align: center;
+}
+
+.balance-text {
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.naira {
+    font-weight: bold;
+}
+
+.box {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.span-box {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.credit {
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+.debit {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.Positive {
+    color: #2ecc71;
+    background-color: #fff;
+}
+
+.Negative {
+    color: #e74c3c;
+    background-color: #fff;
+}
+
+.history-title {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #34495e;
+}
+
+.history {
+    /* Add your specific styles for transaction history here */
+    /* Example: */
+    border: 1px solid #ccc;
+    padding: 3px 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    text-transform: capitalize;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rounded{
+    border-radius: 7px;
+    padding: 5px;
+    background-color: #35393b;
+    color: #fff;
+}
+
+.transactionbox{
+    max-height: 11rem;
+    scroll-behavior: smooth;
+    overflow: auto;
+    padding: 5px;
+}
+
+.content{
+    flex-wrap: wrap;
+}
+
+#user{
+    text-transform: capitalize;
+}
+
+.fa-solid{
+    color: rgb(136, 46, 46);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Form styling */
+form {
+    margin-top: 20px;
+}
+
+/* Style form labels */
+form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* Style form input and select fields */
+form input,
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style submit button */
+form button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #2980b9;
+}
+
+/* Style form errors (if any) */
+form .errorlist {
+    color: #e74c3c;
+    margin-bottom: 16px;
+}
+
+/* Add more styles as needed */
+
+/* Add more styles as needed */
